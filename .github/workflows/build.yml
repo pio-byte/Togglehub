@@ -18,6 +18,10 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
+      - name: Create basic Gradle wrapper
+        run: |
+          gradle wrapper
+
       - name: Build APK
         run: ./gradlew assembleRelease
 
@@ -25,5 +29,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: app/build/outputs/apk/release/app-release.apk
+          path: build/outputs/apk/release/app-release.apk
+          
           
